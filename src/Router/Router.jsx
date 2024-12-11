@@ -26,7 +26,7 @@ import Login from "../Pages/Login";
         },
         {
             path:"/about",
-            element:<div>s</div>
+            element:<div></div>
         },
 
       ]

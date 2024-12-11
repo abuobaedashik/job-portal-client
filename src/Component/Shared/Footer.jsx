@@ -3,7 +3,7 @@ import logo from '../../assets/icons8-job-seeker-color/logo.png'
 const Footer = () => {
   return (
     <div>
-      <footer className="footer bg-base-200 text-base-content p-10">
+      <footer className="footer bg-[#0B192C] text-[#ffff] p-10">
         <aside>
             <img src={logo} alt="" />
           <p>
