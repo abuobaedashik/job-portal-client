@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import AuthContext from "../Context/Authcontext/AuthContext";
+import logo from '../assets/icons8-job-seeker-color/logo.png'
 
 const Navbar = () => {
+  const { user, SignOut } = useContext(AuthContext);
+  const handleSignOut =()=>{
+     SignOut()
+     .then(()=>{
+      console.log('Logout successful');
+     })
+     .catch(error=>{
+       console.log(error.message);
+     })
+  }
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -27,7 +39,7 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             <li>
-              <NavLink to={'/'}>Home</NavLink>
+              <NavLink to={"/"}>Home</NavLink>
             </li>
             <li>
               <a>Parent</a>
@@ -45,7 +57,12 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">News Portal</a>
+        <div className="text-xl flex items-center gap-3 ">
+         <div className="rounded-full">
+           <img src={logo} className="w-8 h-8" alt="" />
+         </div>
+         <div className="text">Job Portal</div>
+           </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -70,14 +87,26 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
-      <div className="navbar-end gap-4">
-        <NavLink to={'/register'}>
-            <button>Register</button>
-        </NavLink>
-        <NavLink to={'/login'}>
-            <button className="rounded-md px-3 py-1 text-[#ffffff] bg-[#407BFF] font-bold">Login</button>
-        </NavLink>
-      </div>
+       <div className="navbar-end">
+       {user ? (
+        <div>
+          <button onClick={handleSignOut}>SignOut</button>
+        </div>
+      ) : (
+        <div className="">
+          <div className="flex items-center  gap-3 mr-5">
+            <NavLink to={"/register"}>
+              <button>Register</button>
+            </NavLink>
+            <NavLink to={"/login"}>
+              <button className="rounded-md px-3 py-1 text-[#ffffff] bg-[#407BFF] font-bold">
+                Login
+              </button>
+            </NavLink>
+          </div>
+        </div>
+      )}
+       </div>
     </div>
   );
 };
