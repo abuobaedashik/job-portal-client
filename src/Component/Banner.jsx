@@ -4,7 +4,7 @@ import { motion } from "motion/react"
 const Banner = () => {
   return (
     <div className="hero bg-[#BFECFF] min-h-[500px] ">
-      <div className="hero-content flex  justify-between items-center lg:flex-row-reverse">
+      <div className="hero-content flex md:flex-row flex-col  justify-between items-center lg:flex-row-reverse">
         <div className="flex-1">
         <motion.img
            animate ={{y:[80,30,80]}}
@@ -20,7 +20,7 @@ const Banner = () => {
         />
         </div>
         <div className="flex-1">
-          <h1 className="text-5xl font-bold">Box Office News!</h1>
+          <h1 className="text-3xl font-bold">Search Your Job</h1>
           <p className="py-6">
             Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
             excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
