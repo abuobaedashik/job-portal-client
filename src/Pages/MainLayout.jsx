@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Navbar from '../Component/Navbar';
-import Footer from '../Component/Shared/Footer';
+import Navbar from '../Component/Shared/Navbar';
+
 
 const MainLayout = () => {
     return (
@@ -10,7 +10,7 @@ const MainLayout = () => {
              <div className="mt-3 mb-6 mx-auto w-11/12">
               <Outlet></Outlet>
              </div>
-            <Footer></Footer>
+            {/* <Footer></Footer> */}
         </div>
     );
 };

@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import AuthContext from "../Context/Authcontext/AuthContext";
-import logo from '../assets/icons8-job-seeker-color/logo.png'
+import logo from '../../assets/icons8-job-seeker-color/logo.png'
 import { IoIosHome } from "react-icons/io";
+import AuthContext from "../../Context/Authcontext/AuthContext";
 
 const Navbar = () => {
   const { user, SignOut } = useContext(AuthContext);
