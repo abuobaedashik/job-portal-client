@@ -1,5 +1,6 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const ApplyJob = () => {
   const job = useLoaderData();
@@ -8,6 +9,7 @@ const ApplyJob = () => {
   console.log(id);
   const { user } = useAuth();
   console.log(user);
+  const navigate =useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,7 +35,16 @@ const ApplyJob = () => {
       body: JSON.stringify(application),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) =>{
+        if (data.insertedId) {
+          Swal.fire({
+            title: "DYour Apply Send Successful",
+            icon: "success",
+            draggable: true
+          })
+        }
+        navigate('/myapplication')
+      });
   };
   return (
     <div>
