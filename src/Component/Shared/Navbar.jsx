@@ -42,16 +42,16 @@ const Navbar = () => {
        
           About 
       </NavLink>
-      {/* <NavLink
+      <NavLink
         className={({ isActive }) =>
           isActive
             ? "px-3 py-1 text-lg bg-[#b4d4ff] font-semibold flex gap-1 items-center"
             : " flex gap-1 items-center"
         }
-        to="/addreview"
+        to="/myapplication"
       >
-       
-      </NavLink> */}
+         My Application
+      </NavLink>
       {/* <NavLink
         className={({ isActive }) =>
           isActive

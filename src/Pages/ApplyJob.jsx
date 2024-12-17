@@ -1,22 +1,40 @@
-import React from "react";
 import { useLoaderData, useParams } from "react-router-dom";
+import useAuth from "../Hooks/useAuth";
 
 const ApplyJob = () => {
   const job = useLoaderData();
   console.log(job);
-  const {id} =useParams()
+  const { id } = useParams();
   console.log(id);
+  const { user } = useAuth();
+  console.log(user);
 
-  const handleSubmit = e=>{
-    e.preventDefault()
-    const form =e.target
-    const linkedin =form.linkedin.value
-    const github =form.github.value
-    const resume =form.resume.value
-    const phone =form.phone.value
-    const application ={linkedin,github,resume,phone}
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const linkedin = form.linkedin.value;
+    const github = form.github.value;
+    const resume = form.resume.value;
+    const phone = form.phone.value;
+    const application = {
+      job_id: id,
+      user_email: user.email,
+      linkedin,
+      github,
+      resume,
+      phone,
+    };
     console.log(application);
-  }
+    fetch("http://localhost:3000/job_application", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(application),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  };
   return (
     <div>
       <div>
@@ -39,7 +57,7 @@ const ApplyJob = () => {
                 </div>
                 <div className="flex  flex-col gap-1">
                   <span className="ml-2 mt-2 mb-1 text-base font-semibold ">
-                  Github Profile
+                    Github Profile
                   </span>
                   <div className="w-full">
                     <input
@@ -55,7 +73,7 @@ const ApplyJob = () => {
               <div className=" grid md:grid-cols-2 grid-cols-1 items-center gap-4 w-full">
                 <div className="flex  flex-col gap-1">
                   <span className="ml-2 mt-2 mb-1 text-base font-semibold ">
-                    Resume Url 
+                    Resume Url
                   </span>
                   <input
                     type="url"
@@ -66,7 +84,7 @@ const ApplyJob = () => {
                 </div>
                 <div className="flex  flex-col gap-1">
                   <span className="ml-2 mt-2 mb-1 text-base font-semibold ">
-                     Contact No.
+                    Contact No.
                   </span>
                   <input
                     type="tel"
