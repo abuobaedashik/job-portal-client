@@ -4,6 +4,7 @@ import { useContext, useState } from 'react';
 import AuthContext from '../Context/Authcontext/AuthContext';
 import { Link,  Navigate, useLocation, useNavigate  } from 'react-router-dom';
 import googlelogo from '../assets/Logo/googleicon.png'
+import { toast, ToastContainer } from 'react-toastify';
 
 const Register = () => {
   // const [show,setshow] =useState(false)
@@ -22,10 +23,11 @@ const Register = () => {
         const regex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
         if (!regex.test(password)) {
           seterr("At Least one UpperCase, one LowerCase and should be six characters long");
-          toast.error(`${err}`, {
-            position: "top-center"
-          });
-          // console.log(err);
+          // toast.error(`${err}`, {
+          //   position: "top-center"
+          // });
+          console.log(err);
+          alert(err)
           return;
         }
         CreateUser(email,password)
@@ -42,12 +44,12 @@ const Register = () => {
       const handleGoogleSignIn =()=>{
         googleSignIn()
         .then((result)=>{
-          // console.log(result.user);
+          console.log(result.user);
           navigate(location?.state ? location?.state : "/");
         })
         .catch((error)=>{
-         const errorMessage = error.message;
-        //  console.log(errorMessage);
+         const Errormessage = error.message;
+         console.log(Errormessage);
         })
       }
     return (
@@ -93,6 +95,7 @@ const Register = () => {
           </div>
           </div>
         </div>
+        <ToastContainer></ToastContainer>
       </div>
     );
 };

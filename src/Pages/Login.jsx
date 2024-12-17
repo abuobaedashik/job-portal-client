@@ -2,11 +2,13 @@ import Lottie from "lottie-react";
 import lottielogin from '../assets/Lottie/Login.json'
 import React, { useContext } from "react";
 import AuthContext from "../Context/Authcontext/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import googlelogo from '../assets/Logo/googleicon.png'
 
 const Login = () => {
     const {LogInUser,googleSignIn}=useContext(AuthContext)
+    const location = useLocation();
+   const navigate = useNavigate();
     const handleLogin =event =>{
         event.preventDefault();
         const form =event.target
@@ -19,6 +21,7 @@ const Login = () => {
         .then(result=>{
             const user =result.user
             console.log(user);
+            navigate(location?.state ? location?.state : "/");
         })
         .catch(error=>{
             const Errormessage =error.message
@@ -30,12 +33,12 @@ const Login = () => {
     const handleGoogleSignIn =()=>{
       googleSignIn()
       .then((result)=>{
-        // console.log(result.user);
+        console.log(result.user);
         navigate(location?.state ? location?.state : "/");
       })
       .catch((error)=>{
        const errorMessage = error.message;
-      //  console.log(errorMessage);
+       console.log(errorMessage);
       })
     }
     return (
