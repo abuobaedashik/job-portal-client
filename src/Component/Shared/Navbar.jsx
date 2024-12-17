@@ -37,10 +37,10 @@ const Navbar = () => {
             ? "px-3 py-1 text-lg bg-[#b4d4ff] font-semibold flex gap-1 items-center"
             : "flex gap-1 items-center "
         }
-        to="/about"
+        to="/addjob"
       >
        
-          About 
+          Add Jobs  
       </NavLink>
       <NavLink
         className={({ isActive }) =>
@@ -96,7 +96,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-40 mx-4  p-2 shadow"
           >
            {link}
           </ul>
