@@ -4,6 +4,7 @@ import React, { useContext } from "react";
 import AuthContext from "../Context/Authcontext/AuthContext";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import googlelogo from '../assets/Logo/googleicon.png'
+import axios from "axios";
 
 const Login = () => {
     const {LogInUser,googleSignIn}=useContext(AuthContext)
@@ -19,8 +20,13 @@ const Login = () => {
         // login
         LogInUser(email,password)
         .then(result=>{
-            const user =result.user
-            console.log(user);
+            
+            console.log(result.user.email);
+            const user ={email: result.user.email}
+            axios.post('http://localhost:3000/jwt',user,{withCredentials:true})
+            .then(res=>{
+              console.log(res.data)
+            })
             navigate(location?.state ? location?.state : "/");
         })
         .catch(error=>{
