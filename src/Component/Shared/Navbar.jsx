@@ -21,8 +21,8 @@ const Navbar = () => {
       <NavLink
         className={({ isActive }) =>
           isActive
-            ? "px-1 py-1 text-lg font-semibold flex gap-1 items-center"
-            : " flex gap-1 items-center"
+            ? "px-3 py-1 text-base bg-[#d40f0f] rounded-md font-medium flex gap-1 items-center"
+            : " flex gap-1 items-center text-base"
         }
         to="/"
       >
@@ -34,8 +34,8 @@ const Navbar = () => {
       <NavLink
         className={({ isActive }) =>
           isActive
-            ? "px-3 py-1 text-lg bg-[#b4d4ff] font-semibold flex gap-1 items-center"
-            : "flex gap-1 items-center "
+            ? "px-3 py-1 text-base bg-[#d40f0f] rounded-md font-medium flex gap-1 items-center"
+            : "flex gap-1 items-center text-base"
         }
         to="/addjob"
       >
@@ -45,23 +45,23 @@ const Navbar = () => {
       <NavLink
         className={({ isActive }) =>
           isActive
-            ? "px-3 py-1 text-lg bg-[#b4d4ff] font-semibold flex gap-1 items-center"
-            : " flex gap-1 items-center"
+            ? "px-3 py-1 text-base bg-[#d40f0f] rounded-md font-medium flex gap-1 items-center"
+            : " flex gap-1 items-center text-base"
         }
         to="/myapplication"
       >
          My Application
       </NavLink>
-      {/* <NavLink
+      <NavLink
         className={({ isActive }) =>
           isActive
-            ? "px-3 py-1 text-lg bg-[#b4d4ff] font-semibold flex gap-1 items-center"
-            : " flex gap-1 items-center"
+            ? "px-3 py-1 text-base bg-[#d40f0f] rounded-md font-medium flex gap-1 items-center"
+            : " flex gap-1 items-center text-base"
         }
-        to="/myreview"
+        to="/mypostedjobs"
       >
-        My Reviews
-      </NavLink> */}
+        My Posted Jobs
+      </NavLink>
       {/* <NavLink
         className={({ isActive }) =>
           isActive
@@ -109,7 +109,7 @@ const Navbar = () => {
            </div>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
+        <ul className="menu menu-horizontal px-1 gap-4">
           {link}
         </ul>
       </div>

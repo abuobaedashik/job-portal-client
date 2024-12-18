@@ -2,9 +2,11 @@
 import React from "react";
 import Swal from "sweetalert2";
 import useAuth from "../Hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const AddJob = () => {
     const {user}=useAuth()
+    const navigate =useNavigate();
     const handleSubmit = e=>{
         e.preventDefault()
         const formData = new FormData(e.target)
@@ -34,6 +36,7 @@ const AddJob = () => {
                         draggable: true
                       })
                     }
+                    navigate('/mypostedjobs')
         })
     }
   return (
@@ -253,7 +256,7 @@ const AddJob = () => {
                   </span>
                   <input
                     type="email"
-                    name="email"
+                    name="hr_email"
                     readOnly
                     defaultValue={user?.email}
                     className="w-full input-accent px-5 py-1 rounded-md"
@@ -266,7 +269,7 @@ const AddJob = () => {
                   </span>
                   <input
                     type="text"
-                    name="name"
+                    name="hr_name"
                     readOnly
                     defaultValue={user?.displayName}
                     className="w-full input-accent px-5 py-1 rounded-md"
