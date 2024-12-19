@@ -14,8 +14,10 @@ const MyApplication = () => {
     //     setapplication(data);
     //     console.log(data);
     //   });
-   axios.get('http://localhost:3000/job_application?email=${user?.email}',{withCredentials:true})
-   .then(res=>setapplication(res.data))
+   axios.get(`http://localhost:3000/job_application?email=${user?.email}`,{withCredentials:true})
+   .then(res=>{
+    console.log(res.data)
+    setapplication(res.data)})
 
   }, [user.email]);
   return (
